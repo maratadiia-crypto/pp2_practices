@@ -1,3 +1,2 @@
-print(10 > 9)
-print(10 == 9)
-print(10 < 9)
+print(bool("Hello")) #output true
+print(bool(15))  #output true

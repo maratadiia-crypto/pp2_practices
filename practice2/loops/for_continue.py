@@ -1,5 +1,5 @@
 fruits = ["apple", "banana", "cherry"]
-for x in fruits:
+for x in fruits:  #it runs through fruits list
   if x == "banana":
-    continue
-  print(x)
+    continue    #it skips banana 
+  print(x)    #prints elements
