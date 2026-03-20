@@ -14,7 +14,7 @@ else:
 
 # 2. Match 'a' followed by two to three 'b'
 # regex pattern: ab{2,3}
-text2 = "abbb"        # example string
+text2 = "ab"        # example string
 pattern2 = r"ab{2,3}" # 'a' followed by 2 or 3 'b'
 
 if re.fullmatch(pattern2, text2):
@@ -27,7 +27,7 @@ else:
 # example: hello_world
 # regex: [a-z]+_[a-z]+
 
-text3 = "hello_world test_case example_text"
+text3 = "hello_world test_case example text"
 
 # pattern finds lowercase words connected with underscore
 pattern3 = r"[a-z]+_[a-z]+"
@@ -39,7 +39,7 @@ print("3.", re.findall(pattern3, text3))
 # 4. Find sequences of one uppercase letter followed by lowercase letters
 # example: Hello World
 # regex: [A-Z][a-z]+
-text4 = "Hello World Python Programming"
+text4 = "Hello цorld Python Programming"
 
 # pattern finds words that start with capital letter
 pattern4 = r"[A-Z][a-z]+"
@@ -49,7 +49,7 @@ print("4.", re.findall(pattern4, text4))
 
 # 5. Match 'a' followed by anything, ending in 'b'
 # regex: a.*b
-text5 = "axxxb"
+text5 = "axxxbс"
 
 # .* means any characters any number of times
 pattern5 = r"a.*b"
