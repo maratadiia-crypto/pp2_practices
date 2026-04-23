@@ -1,3 +1,3 @@
 this repository contains practices for pp2
 
-it now contains 6 practices
+it now contains 10 practices
