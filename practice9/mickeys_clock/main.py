@@ -27,7 +27,7 @@ while running:
         if event.type == pygame.QUIT:
             running = False
 
-    screen.fill((255, 255, 255))  # на всякий случай белый фон
+    screen.fill((255, 255, 255))  
     mickey.draw(screen)
     pygame.display.flip()
     clock.tick(1)
