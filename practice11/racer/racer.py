@@ -12,9 +12,9 @@ FPS = 60
 FramePerSec = pygame.time.Clock()  # fps controller
 
 SPEED = 5
-SCORE = 0
-COINS_COLLECTED = 0  # collected coins counter
-COINS_FOR_SPEED = 3  # coins needed to increase speed
+SCORE = 0  # passed cars counter
+COINS_COLLECTED = 0  # total coin weight
+COINS_FOR_SPEED = 6  # coin weight needed to increase speed
 
 WHITE = (255, 255, 255)
 BLACK = (0, 0, 0)
@@ -63,7 +63,7 @@ class Enemy(pygame.sprite.Sprite):
         self.rect.move_ip(0, SPEED)  # move enemy down
 
         if self.rect.top > SCREEN_HEIGHT:  # if enemy leaves screen
-            SCORE += 1  # increase score
+            SCORE += 1  # increase passed cars
             self.rect.top = 0  # reset position
             self.rect.center = (random.randint(40, SCREEN_WIDTH - 40), 0)
 
@@ -74,26 +74,25 @@ class Coin(pygame.sprite.Sprite):
         super().__init__()  # initialize sprite
 
         self.original_image = pygame.image.load('practice10/racer/Coin.png')  # load coin image
-        self.original_image = pygame.transform.scale(self.original_image, (40, 40))  # resize coin
-
         self.value = 1  # coin weight
-        self.image = self.original_image.copy()  # copy coin image
+        self.image = self.original_image  # coin image
         self.rect = self.image.get_rect()
 
         self.reset_position()  # set random start
 
-    def create_coin_image(self):
-        self.image = self.original_image.copy()  # copy original image
-
-        value_text = font_coin.render(str(self.value), True, BLACK)  # value text
-        text_rect = value_text.get_rect(center=(20, 20))  # text position
-        self.image.blit(value_text, text_rect)  # draw value on coin
-
     def reset_position(self):
         self.value = random.choice([1, 2, 3])  # random coin weight
-        self.create_coin_image()  # update coin image
 
+        if self.value == 1:  # small coin
+            size = 30
+        elif self.value == 2:  # medium coin
+            size = 40
+        else:  # big coin
+            size = 50
+
+        self.image = pygame.transform.scale(self.original_image, (size, size))  # resize coin
         self.rect = self.image.get_rect()  # update rectangle
+
         self.rect.center = (
             random.randint(40, SCREEN_WIDTH - 40),  # random x
             random.randint(-300, -50)  # random y
@@ -153,10 +152,10 @@ while True:
 
     DISPLAYSURF.blit(background, (0, 0))  # draw background
 
-    score_text = font_small.render(f"Score: {SCORE}", True, BLACK)  # score text
+    score_text = font_small.render(f"Score: {SCORE}", True, BLACK)  # passed cars text
     DISPLAYSURF.blit(score_text, (10, 10))  # draw score
 
-    coins_text = font_small.render(f"Coins: {COINS_COLLECTED}", True, BLACK)  # coins text
+    coins_text = font_small.render(f"Coins: {COINS_COLLECTED}", True, BLACK)  # coin weight text
     DISPLAYSURF.blit(coins_text, (SCREEN_WIDTH - coins_text.get_width() - 10, 10))  # draw coins
 
     speed_text = font_small.render(f"Speed: {round(SPEED, 1)}", True, BLACK)  # speed text
@@ -170,10 +169,10 @@ while True:
         DISPLAYSURF.blit(entity.image, entity.rect)  # draw sprites
 
     if pygame.sprite.spritecollideany(P1, coins):  # collision with coin
-        COINS_COLLECTED += 1  # increase coin counter
-        SCORE += C1.value  # add coin weight to score
+        old_coins = COINS_COLLECTED  # save old coin weight
+        COINS_COLLECTED += C1.value  # add coin weight
 
-        if COINS_COLLECTED % COINS_FOR_SPEED == 0:  # check collected coins
+        if old_coins // COINS_FOR_SPEED < COINS_COLLECTED // COINS_FOR_SPEED:
             SPEED += 1  # increase enemy speed
 
         C1.reset_position()  # create new coin

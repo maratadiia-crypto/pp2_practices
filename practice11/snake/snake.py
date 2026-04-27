@@ -57,10 +57,10 @@ snake_block = [SnakeBlock(13, 13)]  # initial snake
 dx, dy = 1, 0  # start moving right
 
 clock = pygame.time.Clock()  # create clock
-speed = 6  # starting speed
+speed = 2  # starting speed
 
 move_event = pygame.USEREVENT + 1  # movement event
-pygame.time.set_timer(move_event, 150)  # movement interval
+pygame.time.set_timer(move_event, 300)  # movement interval
 
 score = 0  # score counter
 level = 1  # level counter

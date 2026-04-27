@@ -1,0 +1,47 @@
+[
+    {
+        "id": 1,
+        "username": "mama",
+        "email": "mama@abc.com",
+        "birthday": "1983-07-05",
+        "group": "aaa",
+        "phone": "8777777777",
+        "type": "home"
+    },
+    {
+        "id": 2,
+        "username": "papa",
+        "email": "papa@def.com",
+        "birthday": "1971-05-10",
+        "group": "bbb",
+        "phone": "899999999",
+        "type": "mobile"
+    },
+    {
+        "id": 3,
+        "username": "Adiya",
+        "email": "adiya@gmail.com",
+        "birthday": "2007-05-12",
+        "group": "Friend",
+        "phone": "87011234567",
+        "type": "mobile"
+    },
+    {
+        "id": 4,
+        "username": "Aruzhan",
+        "email": "aruzhan@mail.com",
+        "birthday": "2006-09-21",
+        "group": "Family",
+        "phone": "87027654321",
+        "type": "mobile"
+    },
+    {
+        "id": 5,
+        "username": "Medikosh",
+        "email": "medikosh@work.com",
+        "birthday": "2005-02-03",
+        "group": "Work",
+        "phone": "87771234567",
+        "type": "work"
+    }
+]
